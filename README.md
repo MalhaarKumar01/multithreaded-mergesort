@@ -1,2 +1,2 @@
 # multithreaded-mergesort
-multithreaded mergesort implementation using POSIX threads.
+Multithreaded merge sort using POSIX library threads.
