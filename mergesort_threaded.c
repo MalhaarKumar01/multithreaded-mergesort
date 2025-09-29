@@ -38,8 +38,14 @@ static void insertion_sort(int *a,int l,int r){
 static void merge(int *a,int *tmp,int l,int m,int r){
     int i=l,j=m+1,k=l;
     while(i<=m && j<=r){tmp[k++]= (a[i]<=a[j]? a[i++]:a[j++]);}
+    
+    // Unroll the remaining copy loops
+    while(i<=m-3){tmp[k++]=a[i++];tmp[k++]=a[i++];tmp[k++]=a[i++];tmp[k++]=a[i++];}
     while(i<=m) tmp[k++]=a[i++];
+    
+    while(j<=r-3){tmp[k++]=a[j++];tmp[k++]=a[j++];tmp[k++]=a[j++];tmp[k++]=a[j++];}
     while(j<=r) tmp[k++]=a[j++];
+    
     memcpy(a+l,tmp+l,(r-l+1)*sizeof(int));
 }
 
